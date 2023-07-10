@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PracticalEighteen.Data\PracticalEighteen.Data.csproj" />
     <ProjectReference Include="..\PracticalEighteen.Domain\PracticalEighteen.Domain.csproj" />
   </ItemGroup>
 
