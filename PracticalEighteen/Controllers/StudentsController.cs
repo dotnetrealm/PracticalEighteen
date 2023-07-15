@@ -2,8 +2,6 @@
 using PracticalEighteen.Domain.DTO;
 using PracticalEighteen.Domain.Interfaces;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace PracticalEighteen.Controllers
 {
 
@@ -18,52 +16,105 @@ namespace PracticalEighteen.Controllers
             _studentRepository = studentRepository;
         }
 
+        /// <summary>
+        /// Return list of students
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAllStudents()
         {
-            IEnumerable<StudentModel> student = await _studentRepository.GetAllStudentsAsync();
-            return Ok(student);
+            try
+            {
+                IEnumerable<StudentModel> student = await _studentRepository.GetAllStudentsAsync();
+                return Ok(student);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
+        /// <summary>
+        /// Return student information by id
+        /// </summary>
+        /// <param name="id">Student Id</param>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStudentById(int id)
         {
-            StudentModel student = await _studentRepository.GetStudentByIdAsync(id);
-            return Ok(student);
+            try
+            {
+                StudentModel student = await _studentRepository.GetStudentByIdAsync(id);
+                return Ok(student);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
+        /// <summary>
+        /// Insert new student
+        /// </summary>
+        /// <param name="student">Student object</param>
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] StudentModel student)
         {
-            if (ModelState.IsValid)
+            try
             {
-                if (student == null) return BadRequest(ModelState);
-                int studentId = await _studentRepository.InsertStudentAsync(student);
-                student.Id = studentId;
-                return CreatedAtAction("GetStudentById", new { id = studentId }, student);
+                if (ModelState.IsValid)
+                {
+                    if (student == null) return BadRequest(ModelState);
+                    int studentId = await _studentRepository.InsertStudentAsync(student);
+                    student.Id = studentId;
+                    return CreatedAtAction("GetStudentById", new { id = studentId }, student);
+                }
+                return BadRequest(ModelState);
             }
-            return BadRequest(ModelState);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT api/<StudentController>/5
+        /// <summary>
+        /// Update studnet details
+        /// </summary>
+        /// <param name="id">Student Id</param>
+        /// <param name="student">Student model</param>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] StudentModel student)
         {
-            if (student == null) return BadRequest(ModelState);
-            bool isUpdated = await _studentRepository.UpdateStudentAsync(id, student);
+            try
+            {
+                if (student == null) return BadRequest(ModelState);
+                bool isUpdated = await _studentRepository.UpdateStudentAsync(id, student);
 
-            if (!isUpdated) return NotFound();
-            return Ok(student);
+                if (!isUpdated) return NotFound();
+                return Ok(student);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // DELETE api/<StudentController>/5
+        /// <summary>
+        /// Delete student by Id
+        /// </summary>
+        /// <param name="id">Student Id</param>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            if (id == 0) return BadRequest();
-            bool isDeleted = await _studentRepository.DeleteStudentAsync(id);
-            if (!isDeleted) return NotFound();
-            return Ok();
+            try
+            {
+                if (id == 0) return BadRequest();
+                bool isDeleted = await _studentRepository.DeleteStudentAsync(id);
+                if (!isDeleted) return NotFound();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -34,19 +34,12 @@ namespace PracticalEighteen.Data.Repositories
 
         public async Task<int> InsertStudentAsync(StudentModel student)
         {
-            try
-            {
-                var data = _mapper.Map<Student>(student);
-                data.Id = 0;
-                await _db.Students.AddAsync(data);
-                await _db.SaveChangesAsync();
-                int id = await _db.Students.MaxAsync(s => s.Id);
-                return id;
-            }
-            catch (Exception ex)
-            {
-                return 0;
-            }
+            var data = _mapper.Map<Student>(student);
+            data.Id = 0;
+            await _db.Students.AddAsync(data);
+            await _db.SaveChangesAsync();
+            int id = await _db.Students.MaxAsync(s => s.Id);
+            return id;
         }
 
         public async Task<bool> UpdateStudentAsync(int studentId, StudentModel student)

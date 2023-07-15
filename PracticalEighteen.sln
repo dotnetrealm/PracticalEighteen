@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalEighteen", "PracticalEighteen\PracticalEighteen.csproj", "{748B52A7-C3A7-4F7A-82A4-ABA919DC90A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticalEighteen.API", "PracticalEighteen\PracticalEighteen.API.csproj", "{748B52A7-C3A7-4F7A-82A4-ABA919DC90A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalEighteen.Domain", "PracticalEighteen.Domain\PracticalEighteen.Domain.csproj", "{58C13B30-E461-4A40-A0DE-1C58E3A0FBC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticalEighteen.Domain", "PracticalEighteen.Domain\PracticalEighteen.Domain.csproj", "{58C13B30-E461-4A40-A0DE-1C58E3A0FBC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalEighteen.Data", "PracticalEighteen.Data\PracticalEighteen.Data.csproj", "{2283EE8E-7A8D-422D-B3D2-887382426EFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticalEighteen.Data", "PracticalEighteen.Data\PracticalEighteen.Data.csproj", "{2283EE8E-7A8D-422D-B3D2-887382426EFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalEighteen.MVC", "PracticalEighteen.MVC\PracticalEighteen.MVC.csproj", "{0B283831-F853-401B-829D-FAC6200FF8FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticalEighteen.MVC", "PracticalEighteen.MVC\PracticalEighteen.MVC.csproj", "{0B283831-F853-401B-829D-FAC6200FF8FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -24,7 +24,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 // Error pages handler
-app.UseStatusCodePagesWithReExecute("Student/PageNotFound");
+app.UseStatusCodePagesWithReExecute("/Student/PageNotFound");
 app.UseRouting();
 
 //Default route
